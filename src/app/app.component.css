@@ -1,0 +1,20 @@
+html, body {
+    height: 100%; /* Asegúrate de que el html y body ocupen toda la altura de la pantalla */
+    margin: 0;
+  }
+  
+  .container-wrapper {
+    display: flex;
+    flex-direction: column; /* Organiza los hijos en una columna */
+    min-height: 100vh; /* Ocupa al menos el 100% de la altura de la ventana */
+  }
+  
+  .container-wrapper app-menu,
+  .container-wrapper button {
+    flex: 0; /* Estos elementos ocupan solo el espacio necesario */
+  }
+  
+  .container-wrapper app-footer {
+    margin-top: auto; /* Empuja el footer hacia el final */
+  }
+  

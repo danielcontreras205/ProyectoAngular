@@ -1,0 +1,11 @@
+footer {
+    font-size: 0.9rem;
+    margin-top: auto;
+  }
+  footer a {
+    transition: color 0.3s ease;
+  }
+  footer a:hover {
+    color: #0d6efd; /* Color azul de Bootstrap */
+  }
+  
