@@ -1,0 +1,19 @@
+<!-- Botón flotante -->
+<button class="chat-btn" (click)="toggleChat()">
+    💬
+</button>
+
+<!-- Contenedor del chat -->
+<div class="chat-box" [class.open]="isOpen">
+    <div class="chat-header">Chat Soporte</div>
+    <div class="chat-body">
+        <p><strong>Soporte:</strong> ¡Hola! ¿En qué puedo ayudarte?</p>
+        <div *ngFor="let msg of messages">
+            <p><strong>Tú:</strong> {{ msg }}</p>
+        </div>
+    </div>
+    <div class="chat-footer">
+        <input type="text" [(ngModel)]="newMessage" placeholder="Escribe un mensaje...">
+        <button (click)="sendMessage()">➤</button>
+    </div>
+</div>
