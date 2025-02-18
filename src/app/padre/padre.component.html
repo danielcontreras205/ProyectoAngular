@@ -1,0 +1,17 @@
+<div class="container mt-5 text-center">
+    <h2>Comunicacion de componentes</h2> 
+    <p>de Padre a Hijo</p>
+    <div class="mt-3 justify-content-center">
+        <app-hijo [mensaje]="mensajePadre"></app-hijo>
+    </div>
+</div>
+------------------------------------------------
+<div class="container mt-5 text-center">
+    <p>de hijo a padre</p>
+    <div class="mt-3 justify-content-center">
+        <app-hijo (notificarPadre)="recibirNotificacion($event)"></app-hijo>
+        @if(mensaje){
+            <p class="mt-3 alert alert-info w-50 mx-auto">{{mensaje}}</p>
+        }
+    </div>
+</div>
