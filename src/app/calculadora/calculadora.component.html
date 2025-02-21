@@ -2,7 +2,7 @@
     <h1>{{titulo}}</h1>
     <div class="mt-3 justify-content-center">
         <app-formulario (resultado)="recibirCalculo($event)"></app-formulario>
-        @if(result){
+        @if(result !== null){
             <p class="mt-3 alert alert-info w-50 mx-auto">el valor es: {{result}}</p>
         }
     </div>

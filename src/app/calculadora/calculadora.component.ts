@@ -11,7 +11,7 @@ import { FormularioComponent } from "./formulario/formulario.component";
 export class CalculadoraComponent {
   titulo = 'Aplicaion Calculadora';
 
-  result!: number;
+  result: number = 0;
 
   recibirCalculo(calculo: number) {
     this.result = calculo;
