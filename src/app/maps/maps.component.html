@@ -1,0 +1,29 @@
+<div class="container mt-4">
+    <h4 class="mb-3">Mapa con geolocalización y rutas</h4>
+  
+    <!-- Botones -->
+    <div class="mb-3 d-flex flex-wrap gap-2">
+      <button class="btn btn-primary" (click)="crearBuffer()">Crear buffer de 10 km</button>
+      <button class="btn btn-danger" (click)="quitarBuffer()">Quitar buffer</button>
+      <button class="btn btn-secondary" (click)="centrarEnUbicacion()">Centrar en mi ubicación</button>
+      <button class="btn btn-success" (click)="trazarRuta()">Trazar ruta</button>
+    </div>
+  
+    <!-- Coordenadas -->
+    <div class="card mb-3">
+      <div class="d-flex">
+        <div class="card-body">
+          <h5 class="card-title">Mis coordenadas</h5>
+          <p class="card-text mb-1"><strong>Latitud:</strong> {{ coordenadas?.lat }}</p>
+          <p class="card-text"><strong>Longitud:</strong> {{ coordenadas?.lng }}</p>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Información del lugar</h5>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Mapa -->
+    <div class="border rounded shadow-sm" style="height: 400px;z-index: 0;" id="map"></div>
+  </div>
+  

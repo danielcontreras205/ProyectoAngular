@@ -8,6 +8,7 @@ import { ForComponent } from './for/for.component';
 import { PadreComponent } from './padre/padre.component';
 import { CalculadoraComponent } from './calculadora/calculadora.component';
 import { ViewChildComponent } from './view-child/view-child.component';
+import { MapsComponent } from './maps/maps.component';
 
 export const routes: Routes = [
     {path:'',redirectTo:'/inicio',pathMatch:'full'},
@@ -18,7 +19,8 @@ export const routes: Routes = [
     {path: 'for', component: ForComponent},
     {path: 'padre', component: PadreComponent},
     {path: 'calculadora', component: CalculadoraComponent},
-    {path: 'ViewChild', component: ViewChildComponent}
+    {path: 'ViewChild', component: ViewChildComponent},
+    {path: 'mapa', component: MapsComponent}
 ];
 
 @NgModule({
