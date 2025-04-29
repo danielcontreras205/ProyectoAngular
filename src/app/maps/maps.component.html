@@ -1,29 +1,49 @@
 <div class="container mt-4">
-    <h4 class="mb-3">Mapa con geolocalización y rutas</h4>
+    <h4 class="mb-4">Mapa con Geolocalización y Rutas</h4>
   
     <!-- Botones -->
-    <div class="mb-3 d-flex flex-wrap gap-2">
+    <div class="mb-4 d-flex flex-wrap gap-2">
       <button class="btn btn-primary" (click)="crearBuffer()">Crear buffer de 10 km</button>
       <button class="btn btn-danger" (click)="quitarBuffer()">Quitar buffer</button>
       <button class="btn btn-secondary" (click)="centrarEnUbicacion()">Centrar en mi ubicación</button>
       <button class="btn btn-success" (click)="trazarRuta()">Trazar ruta</button>
     </div>
   
-    <!-- Coordenadas -->
-    <div class="card mb-3">
-      <div class="d-flex">
-        <div class="card-body">
-          <h5 class="card-title">Mis coordenadas</h5>
-          <p class="card-text mb-1"><strong>Latitud:</strong> {{ coordenadas?.lat }}</p>
-          <p class="card-text"><strong>Longitud:</strong> {{ coordenadas?.lng }}</p>
+    <!-- Información -->
+    <div class="card mb-4">
+      <div class="row g-0">
+        <div class="col-md-6 border-end">
+          <div class="card-body">
+            <h5 class="card-title">Mis Coordenadas</h5>
+            <p class="card-text"><strong>Latitud:</strong> {{ coordenadas?.lat }}</p>
+            <p class="card-text"><strong>Longitud:</strong> {{ coordenadas?.lng }}</p>
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title">Información del lugar</h5>
+        <div class="col-md-6">
+          <div class="card-body">
+            <h5 class="card-title">Información del Lugar</h5>
+            <div *ngIf="locationInfo; else sinInfo">
+              <p class="mb-2"><strong>Nombre:</strong> {{ locationInfo.name }}</p>
+              <p class="mb-2"><strong>Dirección:</strong> {{ locationInfo.display_name }}</p>
+              <h6>Detalles:</h6>
+              <ul class="mb-0">
+                <li><strong>Edificio:</strong> {{ locationInfo.address.building }}</li>
+                <li><strong>Calle:</strong> {{ locationInfo.address.road }}</li>
+                <li><strong>Número:</strong> {{ locationInfo.address.house_number }}</li>
+                <li><strong>Ciudad:</strong> {{ locationInfo.address.city }}</li>
+                <li><strong>Estado:</strong> {{ locationInfo.address.state }}</li>
+                <li><strong>País:</strong> {{ locationInfo.address.country }}</li>
+              </ul>
+            </div>
+            <ng-template #sinInfo>
+              <p class="text-muted">No se ha cargado información del lugar.</p>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>
   
     <!-- Mapa -->
-    <div class="border rounded shadow-sm" style="height: 400px;z-index: 0;" id="map"></div>
+    <div class="border rounded shadow-sm" style="height: 400px; z-index: 0;" id="map"></div>
   </div>
   

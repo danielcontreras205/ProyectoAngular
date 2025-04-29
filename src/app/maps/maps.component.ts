@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
 import * as L from 'leaflet';
 
@@ -6,7 +7,7 @@ import * as L from 'leaflet';
   standalone: true,
   templateUrl: './maps.component.html',
   styleUrl: './maps.component.css',
-  imports: []
+  imports: [CommonModule]
 })
 export class MapsComponent implements AfterViewInit {
   map!: L.Map;
@@ -15,6 +16,7 @@ export class MapsComponent implements AfterViewInit {
   bufferCircle!: L.Circle;
   coordenadas: { lat: number, lng: number } | null = null;
   routeLayer!: L.GeoJSON<any>;
+  locationInfo: any = null;
 
   ngAfterViewInit(): void {
     this.initMap();
@@ -43,6 +45,7 @@ export class MapsComponent implements AfterViewInit {
             this.marker = L.marker(this.userLocation).addTo(this.map)
               .bindPopup('Tu ubicación')
               .openPopup();
+              this.infoMap();
           }
 
           this.map.setView(this.userLocation, 20);
@@ -54,6 +57,7 @@ export class MapsComponent implements AfterViewInit {
           timeout: 5000
         }
       );
+      
     } else {
       alert('La geolocalización no está soportada por tu navegador');
     }
@@ -132,6 +136,28 @@ export class MapsComponent implements AfterViewInit {
         this.map.fitBounds(this.routeLayer.getBounds());
       })
       .catch(err => console.error('Error al trazar ruta:', err));
+  }
+  infoMap(): void {
+
+    if (!this.userLocation) {
+      alert('Ubicación aún no detectada');
+      return;
+    }
+    const url = 'https://nominatim.openstreetmap.org/reverse?lat='+this.userLocation.lat+'&lon='+this.userLocation.lng+'&format=json';
+    
+    fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
+      return response.json();
+    })
+    .then(data => {
+      this.locationInfo = data; // guardamos aquí la respuesta
+    })
+    .catch(error => {
+      console.error('Error al hacer la petición:', error);
+    });
   }
 }
 
