@@ -1,39 +1,74 @@
 <div class="container">
-    <section id="servicios" class="py-5 bg-light">
-        <div class="container">
-            <div class="text-center mb-4">
-                <h2>Nuestros Servicios</h2>
-                <p class="text-muted">Descubre lo que podemos hacer por ti</p>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Consultoría</h5>
-                            <p class="card-text">Asesoramos a empresas para mejorar su rendimiento y alcanzar sus
-                                objetivos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Desarrollo de Software</h5>
-                            <p class="card-text">Creamos soluciones personalizadas para tus necesidades tecnológicas.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title">Soporte Técnico</h5>
-                            <p class="card-text">Ofrecemos soporte 24/7 para garantizar el funcionamiento continuo de
-                                tus sistemas.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+    <h1 class="text-center">Despliegue de Proyecto Angular en GitHub Pages</h1>
+    <p class="lead text-center">
+      Aquí te mostramos los pasos detallados para desplegar tu proyecto Angular en GitHub Pages.
+    </p>
+  
+    <div class="step">
+      <h3>1. Configuración Inicial del Proyecto</h3>
+      <p>Asegúrate de que tu proyecto Angular esté correctamente configurado. Primero, verifica que el atributo <code>baseHref</code> esté bien configurado en el archivo <code>angular.json</code>.</p>
+      <p>En la sección de build, dentro de <code>angular.json</code>, asegúrate de tener algo como esto:</p>
+      <div class="code">
+        {{ '{' }}
+          "projects": {{ '{' }}
+            "tu-proyecto": {{ '{' }}
+              "architect": {{ '{' }}
+                "build": {{ '{' }}
+                  "options": {{ '{' }}
+                    "baseHref": "/ProyectoAngular/"
+                   {{ '}' }}
+                 {{ '}' }}
+               {{ '}' }}
+             {{ '}' }}
+           {{ '}' }}
+        {{ '}' }}
+      </div>
+    </div>
+  
+    <div class="step">
+      <h3>2. Compilación del Proyecto para Producción</h3>
+      <p>Compila el proyecto para producción usando el siguiente comando. Esto generará los archivos listos para el despliegue en la carpeta <code>dist/</code>.</p>
+      <div class="code">
+        ng build --configuration production
+      </div>
+      <p>Este comando creará una carpeta dentro de <code>dist/nombre-del-proyecto/browser</code> que contiene todos los archivos necesarios para el despliegue.</p>
+    </div>
+  
+    <div class="step">
+      <h3>3. Despliegue a GitHub Pages</h3>
+      <p>Usa el siguiente comando para desplegar tu proyecto a GitHub Pages. Asegúrate de ejecutar este comando desde la raíz del proyecto. Tiene que aparecer el index.html</p>
+      <div class="code">
+        npx angular-cli-ghpages --dir=dist/nombre-del-proyecto/browser
+      </div>
+      <p>Este comando subirá los archivos generados en la carpeta <code>browser</code> a la rama <code>gh-pages</code> de tu repositorio en GitHub.</p>
+      <p>Si todo va bien, verás un mensaje similar a este:</p>
+      <div class="code">
+        🌟 Successfully published via angular-cli-ghpages! Have a nice day!
+      </div>
+    </div>
+  
+    <div class="step">
+      <h3>4. Verificar el Despliegue</h3>
+      <p>Una vez completado el despliegue, podrás acceder a tu aplicación en GitHub Pages en la siguiente URL:</p>
+      <div class="code">
+        https://danielcontreras205.github.io/ProyectoAngular/               
+      </div>
+      <p>Reemplaza <code>danielcontreras205</code> con tu nombre de usuario de GitHub y <code>ProyectoAngular</code> con el nombre de tu repositorio.</p>
+    </div>
+  
+    <div class="step">
+      <h3>5. Automatizar el Despliegue con un Script</h3>
+      <p>Para hacer el proceso más sencillo, puedes agregar un script en tu archivo <code>package.json</code> para automatizar el despliegue.</p>
+      <div class="code">
+        {{ '{' }}
+          "scripts": {{ '{' }}
+            "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/nombre-del-proyecto/browser"
+            {{ '}' }}
+        {{ '}' }}
+      </div>
+      <p>Luego, puedes ejecutar el siguiente comando para compilar y desplegar en un solo paso:</p>
+      <div class="code">
+        npm run deploy
+      </div>
+    </div>
+  </div>

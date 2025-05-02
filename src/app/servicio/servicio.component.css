@@ -1,0 +1,20 @@
+  
+  .step {
+    margin-bottom: 20px;
+  }
+  
+  .step h3 {
+    color: #007bff;
+  }
+  
+  .code {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: monospace;
+    overflow-x: auto; /* Para permitir scroll horizontal si es necesario */
+    white-space: pre-wrap; /* Permite el ajuste de línea */
+    word-break: break-word; /* Fuerza el corte de palabras largas */
+  }
+  

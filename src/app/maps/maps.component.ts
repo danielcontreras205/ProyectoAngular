@@ -20,7 +20,6 @@ export class MapsComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-    this.trackLocation();
   }
 
   initMap(): void {
@@ -48,7 +47,9 @@ export class MapsComponent implements AfterViewInit {
               this.infoMap();
           }
 
-          this.map.setView(this.userLocation, 20);
+          // Obtén el zoom actual y usa ese valor dinámicamente
+          const currentZoom = this.map.getZoom();
+          this.map.setView(this.userLocation, currentZoom);
         },
         error => console.error('Error obteniendo ubicación:', error),
         {
